@@ -34,7 +34,7 @@ class Controller:
 
     def calcola_sequenza(self, e):
         if self.mese_selezionato == 0:
-            self._view.show_alert("Selezionare un Mese!")
+            self._view.show_alert("Selezionare un Mese! ")
         else:
             sequenza_ottima, costo = self._model.get_sequenza_ottima(self.mese_selezionato)
             self._view.lista_visualizzazione.controls.clear()
@@ -42,3 +42,5 @@ class Controller:
             for stop in sequenza_ottima:
                 self._view.lista_visualizzazione.controls.append(ft.Text(stop))
             self._view.update()
+
+
