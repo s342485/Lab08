@@ -66,11 +66,8 @@ class View:
             tooltip="Calcola la sequenza ottimale per le analisi",
             on_click=self.controller.calcola_sequenza
         )
-
-        # SEZIONE 3: Visualizzazione mediante ListView ########################################
+        # SEZIONE 3: Visualizzazione mediante ListView
         self.lista_visualizzazione = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
-
-
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
 
@@ -97,7 +94,6 @@ class View:
                 padding=5,
             ),
         )
-
         self.page.scroll = "adaptive"
         self.page.update()
 

@@ -14,6 +14,7 @@ class Model:
 
         self.__sequenza_ottima = []
         self.__costo_ottimo = -1
+        self._lista_per_mese = []
 
     def load_impianti(self):
         """ Carica tutti gli impianti e li setta nella variabile self._impianti """
@@ -25,7 +26,22 @@ class Model:
         :param mese: Mese selezionato (un intero da 1 a 12)
         :return: lista di tuple --> (nome dell'impianto, media), es. (Impianto A, 123)
         """
-        # TODO
+        somma_mensile = 0
+        contatore = 0
+        for impianto in self._impianti:
+            consumi = impianto.get_consumi()
+            impianto_corrente = impianto.nome
+            for consumo in consumi:
+                consumo_mensile = consumo.data.month
+                if mese == consumo_mensile:
+                    somma_mensile = somma_mensile + consumo.kwh
+                    contatore += 1
+
+            media = round((somma_mensile / contatore) , 2)
+            self._lista_per_mese.append((impianto_corrente,media))
+
+
+        return self._lista_per_mese
 
     def get_sequenza_ottima(self, mese:int):
         """
